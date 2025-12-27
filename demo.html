@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS - ProofAI Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        body { background: #020617; color: #22d3ee; font-family: 'JetBrains Mono', monospace; margin: 0; overflow: hidden; }
+        .glow { box-shadow: 0 0 15px rgba(34, 211, 238, 0.4); }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .pulse { animation: pulse 2s infinite; }
+        .rotate { animation: rotate 8s linear infinite; }
+        .fade-in { animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        let tab = 'splash';
+        function render() {
+            const root = document.getElementById('root');
+            if (tab === 'splash') {
+                root.innerHTML = `<div class="fixed inset-0 flex flex-col items-center justify-center">
+                    <div class="w-64 h-64 border-2 border-dashed border-cyan-500/50 rounded-full flex items-center justify-center rotate">
+                        <div class="w-24 h-24 bg-cyan-500/20 rounded-full flex items-center justify-center glow pulse">
+                            <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/></svg>
+                        </div>
+                    </div>
+                    <h1 class="text-5xl font-bold mt-8" style="font-family: Orbitron">J.A.R.V.I.S.</h1>
+                    <p class="text-sm mt-2 opacity-70">Just A Rather Very Intelligent System</p>
+                </div>`;
+                setTimeout(() => { tab = 'dashboard'; render(); }, 3000);
+            } else {
+                root.innerHTML = `<div class="h-screen flex flex-col fade-in">
+                    <div class="border-b border-cyan-500/30 p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h1 class="text-2xl font-bold" style="font-family: Orbitron">J.A.R.V.I.S.</h1>
+                                <p class="text-xs opacity-70">SYSTEM HUD v3.0</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-green-400 rounded-full pulse"></div>
+                                <span class="text-xs">ONLINE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 p-6 overflow-auto">
+                        <div class="max-w-4xl mx-auto space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="border border-cyan-500/30 rounded-lg p-4 bg-cyan-500/5 glow">
+                                    <p class="text-xs opacity-70">SYSTEM STATUS</p>
+                                    <p class="text-lg font-bold">OPERATIONAL</p>
+                                </div>
+                                <div class="border border-cyan-500/30 rounded-lg p-4 bg-cyan-500/5">
+                                    <p class="text-xs opacity-70">UPTIME</p>
+                                    <p class="text-lg font-bold">99.9%</p>
+                                </div>
+                                <div class="border border-cyan-500/30 rounded-lg p-4 bg-cyan-500/5">
+                                    <p class="text-xs opacity-70">SCANS</p>
+                                    <p class="text-lg font-bold">1,247</p>
+                                </div>
+                            </div>
+                            <div class="border border-cyan-500/30 rounded-lg p-6 bg-cyan-500/5 glow">
+                                <h2 class="text-xl font-bold mb-4" style="font-family: Orbitron">EVIDENCE SCANNER</h2>
+                                <p class="text-sm opacity-70 mb-6">Upload or capture evidence for AI-powered analysis</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="border-2 border-cyan-500 rounded-lg p-6 text-center hover:bg-cyan-500/10 transition-all cursor-pointer">
+                                        <svg class="w-12 h-12 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                        <p class="font-bold">HOLOGRAPHIC SCANNER</p>
+                                        <p class="text-xs opacity-70 mt-1">Capture Evidence</p>
+                                    </div>
+                                    <div class="border-2 border-cyan-500 rounded-lg p-6 text-center hover:bg-cyan-500/10 transition-all cursor-pointer">
+                                        <svg class="w-12 h-12 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                        </svg>
+                                        <p class="font-bold">FILE UPLINK</p>
+                                        <p class="text-xs opacity-70 mt-1">Upload Evidence</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="border border-cyan-500/30 rounded-lg p-4 bg-cyan-500/5">
+                                    <h3 class="font-bold mb-2">✓ AI-Powered Analysis</h3>
+                                    <p class="text-xs opacity-70">Google Gemini 3 Pro integration for intelligent evidence processing</p>
+                                </div>
+                                <div class="border border-cyan-500/30 rounded-lg p-4 bg-cyan-500/5">
+                                    <h3 class="font-bold mb-2">✓ Trust Score System</h3>
+                                    <p class="text-xs opacity-70">Automatic credibility assessment with detailed metrics</p>
+                                </div>
+                                <div class="border border-cyan-500/30 rounded-lg p-4 bg-cyan-500/5">
+                                    <h3 class="font-bold mb-2">✓ Auto Complaint Generation</h3>
+                                    <p class="text-xs opacity-70">Cyber, Banking & Consumer complaint templates</p>
+                                </div>
+                                <div class="border border-cyan-500/30 rounded-lg p-4 bg-cyan-500/5">
+                                    <h3 class="font-bold mb-2">✓ Multi-Language Support</h3>
+                                    <p class="text-xs opacity-70">English & Hindi interface with bilingual reports</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-cyan-500/30 p-4 text-center">
+                        <p class="text-xs opacity-50">STARK INDUSTRIES SECURE PROTOCOL © 2025</p>
+                    </div>
+                </div>`;
+            }
+        }
+        render();
+    </script>
+</body>
+</html>
