@@ -1,0 +1,7 @@
+{
+  "description": "JARVIS AI - Stark Industries Evidence Analysis System",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "name": "JARVIS - ProofAI"
+}
